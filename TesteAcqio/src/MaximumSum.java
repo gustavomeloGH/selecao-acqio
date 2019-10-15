@@ -1,14 +1,9 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class MaximumSum {
 
     public static void main(String[] args) {
-        int[] integerArray;
-        try {
-            integerArray = populateArrayWithInput();
-        } catch (InputMismatchException ex) {
-            System.out.println("Entrada inválida!");
+        int[] integerArray = new int[] {5,2,4};
+        if (integerArray.length < 2) {
+            System.out.println("O array deve ter tamanho mínimo igual a 2");
             return;
         }
 
@@ -20,47 +15,23 @@ public class MaximumSum {
     }
 
     /**
-     * Notação de Tempo: big-O (n)
-     * Notação de espaço:
+     * Notação de Tempo: big-O (n-1)
      *
-     * Esta função possui notação de tempo big-O(n)
+     * Esta função possui notação de tempo big-O(n-1)
      * pois seu tempo de execução depende diretamente
-     * do tamanho da entrada do 'size'
-     */
-    private static int[] populateArrayWithInput() throws InputMismatchException{
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Digite a quantidade de números que será digitado: (Mínimo 2)");
-        int size = scanner.nextInt();
-        if (size < 2) size = 2;
-        int[] integerArray = new int[size];
-
-        for (int i = 0; i <= size -1; i++) {
-            System.out.println(String.format("Digite um número inteiro: [%d/%d]", i + 1, size));
-            int integerInput = scanner.nextInt();
-            integerArray[i] = integerInput;
-
-        }
-        return integerArray;
-    }
-
-    /**
-     * Notação de Tempo: big-O (n)
-     * Notação de espaço:
-     *
-     * Esta função possui notação de tempo big-O(n)
-     * pois seu tempo de execução depende diretamente
-     * do tamanho do array de entrada, no caso, o 'integerArray'
+     * do tamanho do array de entrada - 1, pois inicia
+     * a interação a partir do 2º elemento do array
      */
     private static int calculateMaxSum(int[] integerArray) {
-        int maxValue = 0;
+        int maxValue = integerArray[0];
         int previousMaxValue = 0;
 
-        for (int currInteger : integerArray) {
-            if (currInteger > maxValue) {
-                maxValue = currInteger;
-            } else if (currInteger > previousMaxValue) {
-                previousMaxValue = currInteger;
+        for (int i = 1; i < integerArray.length; i++) {
+            if (integerArray[i] > maxValue) {
+                previousMaxValue = maxValue;
+                maxValue = integerArray[i];
+            } else if (integerArray[i] > previousMaxValue) {
+                previousMaxValue = integerArray[i];
             }
         }
 

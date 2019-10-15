@@ -54,6 +54,13 @@ public class HexadecimalParser {
         return result;
     }
 
+    /**
+     * Notação de Tempo: big-O (1)
+     *
+     * Esta função possui notação de tempo big-O(1)
+     * pois independente do valor de entrada,
+     * o tempo de execução será sempre constante
+     */
     private static int getDecimalValue(int ascii) {
         if (belongsHexSymbols(ascii))
             return (ascii - START_ASCII_SYMBOLS);
@@ -67,7 +74,6 @@ public class HexadecimalParser {
 
     /**
      * Notação de Tempo: big-O (1)
-     * Notação de espaço:
      *
      * Esta função possui notação de tempo big-O(1)
      * pois independente do valor de entrada,
@@ -79,7 +85,6 @@ public class HexadecimalParser {
 
     /**
      * Notação de Tempo: big-O (1)
-     * Notação de espaço:
      *
      * Esta função possui notação de tempo big-O(1)
      * pois independente do valor de entrada,
