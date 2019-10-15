@@ -1,13 +1,14 @@
 public class MaximumSum {
 
     public static void main(String[] args) {
-        int[] integerArray = new int[] {5,2,4};
+        int[] integerArray = new int[] {-2, 1, -1, 0};       //Big-O notation in Space complexity: O(n)
+
         if (integerArray.length < 2) {
             System.out.println("O array deve ter tamanho mínimo igual a 2");
             return;
         }
 
-        int maxSum = calculateMaxSum(integerArray);
+        int maxSum = calculateMaxSum(integerArray);         //Big-O notation in Space complexity: O(1)
         System.out.println(String.format(
             "O resultado dos dois números cuja soma é a maior dentre todas as possíveis é: %d",
             maxSum)
@@ -15,18 +16,19 @@ public class MaximumSum {
     }
 
     /**
-     * Notação de Tempo: big-O (n-1)
+     * Big-O notation in Time complexity: Big-O (n-1)
      *
-     * Esta função possui notação de tempo big-O(n-1)
-     * pois seu tempo de execução depende diretamente
-     * do tamanho do array de entrada - 1, pois inicia
-     * a interação a partir do 2º elemento do array
-     */
+     * This function has Big-O (n-1) time analysis
+     * complexity because its execution time depends
+     * on the size of the input array - 1,
+     * because interaction starts from the 2nd array element
+     *
+     *  */
     private static int calculateMaxSum(int[] integerArray) {
-        int maxValue = integerArray[0];
-        int previousMaxValue = 0;
+        int maxValue = integerArray[0];                     //Big-O notation in Space complexity: O(1)
+        int previousMaxValue = 0;                           //Big-O notation in Space complexity: O(1)
 
-        for (int i = 1; i < integerArray.length; i++) {
+        for (int i = 1; i < integerArray.length; i++) {     //Big-O notation in Space complexity: O(n)
             if (integerArray[i] > maxValue) {
                 previousMaxValue = maxValue;
                 maxValue = integerArray[i];

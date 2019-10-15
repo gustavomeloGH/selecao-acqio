@@ -2,23 +2,24 @@ import java.util.Scanner;
 
 public class HexadecimalParser {
 
-    private static final int START_ASCII_LETTERS = 65;
-    private static final int END_ASCII_LETTERS = 70;
+    private static final int START_ASCII_LETTERS = 65;      //Big-O notation in Space complexity: O(1)
+    private static final int END_ASCII_LETTERS = 70;        //Big-O notation in Space complexity: O(1)
 
-    private static final int START_ASCII_SYMBOLS = 48;
-    private static final int END_ASCII_SYMBOLS = 57;
-    private static final int ADDITIONAL_START_LETTERS = 10;
+    private static final int START_ASCII_SYMBOLS = 48;      //Big-O notation in Space complexity: O(1)
+    private static final int END_ASCII_SYMBOLS = 57;        //Big-O notation in Space complexity: O(1)
+    private static final int ADDITIONAL_START_LETTERS = 10; //Big-O notation in Space complexity: O(1)
 
-    private static final int INT_ERROR = -1;
+    private static final int INT_ERROR = -1;                //Big-O notation in Space complexity: O(1)
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
+        Scanner scanner = new Scanner(System.in);           //Big-O notation in Space complexity: O(1)
 
         System.out.println("Digite um valor em Hexadecimal para conversão:");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine();                  //Big-O notation in Space complexity: O(1)
 
         int result = parseHexInt(input);
-        String msg = ( INT_ERROR == result ) ?
+        String msg = ( INT_ERROR == result ) ?              //Big-O notation in Space complexity: O(1)
             "[ERROR]: O valor de entrada não é um Hexadecimal válido!" :
             String.format(
                     "[SUCCESS]: O valor de %s em Hexadecimal para Decimal é: %d",
@@ -28,21 +29,22 @@ public class HexadecimalParser {
     }
 
     /**
-     * Notação de Tempo: big-O (n)
-     * Notação de espaço:
+     * Big-O notation in Time complexity: Big-O (n)
      *
-     * Esta função possui notação de tempo big-O(n)
-     * pois seu tempo de execução depende diretamente
-     * do tamanho da entrada, no caso, o 'input'
-     */
+     * This function has Big-O (n) time analysis
+     * complexity because its execution time depends
+     * directly on the size of the input,
+     * in this case, the size of the 'input' string
+     *
+     *  */
     private static int parseHexInt(String input) {
-        int result = 0;
-        int hexPower = 1;
-        int length = input.length();
+        int result = 0;                                 //Big-O notation in Space complexity: O(1)
+        int hexPower = 1;                               //Big-O notation in Space complexity: O(1)
+        int length = input.length();                    //Big-O notation in Space complexity: O(1)
 
-        for (int i = length - 1; i >= 0; i--) {
-            int ascii = (int) input.charAt(i);
-            int decimalValue = getDecimalValue(ascii);
+        for (int i = length - 1; i >= 0; i--) {         //Big-O notation in Space complexity: O(n)
+            int ascii = (int) input.charAt(i);          //Big-O notation in Space complexity: O(1)
+            int decimalValue = getDecimalValue(ascii);  //Big-O notation in Space complexity: O(1)
 
             if (INT_ERROR == decimalValue)
                 return INT_ERROR;
@@ -55,12 +57,14 @@ public class HexadecimalParser {
     }
 
     /**
-     * Notação de Tempo: big-O (1)
+     * Big-O notation in Time complexity: Big-O (1)
      *
-     * Esta função possui notação de tempo big-O(1)
-     * pois independente do valor de entrada,
-     * o tempo de execução será sempre constante
-     */
+     * This function has Big-O (1) time analysis
+     * complexity because regardless of the input
+     * value, its execution time will always be
+     * constant.
+     *
+     *  */
     private static int getDecimalValue(int ascii) {
         if (belongsHexSymbols(ascii))
             return (ascii - START_ASCII_SYMBOLS);
@@ -71,25 +75,28 @@ public class HexadecimalParser {
         return INT_ERROR;
     }
 
-
     /**
-     * Notação de Tempo: big-O (1)
+     * Big-O notation in Time complexity: Big-O (1)
      *
-     * Esta função possui notação de tempo big-O(1)
-     * pois independente do valor de entrada,
-     * o tempo de execução será sempre constante
-     */
+     * This function has Big-O (1) time analysis
+     * complexity because regardless of the input
+     * value, its execution time will always be
+     * constant.
+     *
+     *  */
     private static boolean belongsHexSymbols(int ascii) {
         return (ascii >= START_ASCII_SYMBOLS && ascii <= END_ASCII_SYMBOLS);
     }
 
     /**
-     * Notação de Tempo: big-O (1)
+     * Big-O notation in Time complexity: Big-O (1)
      *
-     * Esta função possui notação de tempo big-O(1)
-     * pois independente do valor de entrada,
-     * o tempo de execução será sempre constante
-     */
+     * This function has Big-O (1) time analysis
+     * complexity because regardless of the input
+     * value, its execution time will always be
+     * constant.
+     *
+     *  */
     private static boolean belongsHexLetters(int ascii) {
         return (ascii >= START_ASCII_LETTERS && ascii <= END_ASCII_LETTERS);
     }
